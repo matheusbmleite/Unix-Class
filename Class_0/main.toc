@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.33pt}
+\select@language {brazilian}
+\beamer@sectionintoc {1}{Distribui\IeC {\c c}\IeC {\~o}es de Linux}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Amig\IeC {\'a}veis}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Enxutas}{18}{0}{1}
+\beamer@subsectionintoc {1}{3}{Minimalistas}{26}{0}{1}
