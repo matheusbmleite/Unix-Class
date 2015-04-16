@@ -1,0 +1,225 @@
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+
+% There are many different themes available for Beamer. A comprehensive
+% list with examples is given here:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+% You can uncomment the themes below if you would like to use a different
+% one:
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{boxes}
+\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{default}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+\title{Aula 6 - Unix}
+
+% A subtitle is optional and this may be deleted
+\subtitle{Curso de Unix}
+
+\author{PET Computa\c{c}ão}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[UFSC] % (optional, but mostly needed)
+{
+%
+  Departamento de Informática e Estatística\\
+  Universidade de Santa Catarina}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date{PET Computa\c{c}ão, 2015}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{Curso de Unix}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Sumário}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+% Let's get started
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+% Section and subsections will appear in the presentation overview
+% and table of contents.
+\section{Outros comandos interessantes}
+
+\subsection{df}
+
+\begin{frame}{df}
+  \begin{itemize}
+  \item {O comando \textbf{df} retorna ao usuário a quantidade de espaço no disco.
+  }
+  \item{Para mais fácil compreensão é possível usar a flag \textbf{-h} para que o retorno esteja em unidades mais comuns ao uso humano.}
+  
+  \end{itemize}
+\end{frame}
+
+\subsection{du}
+\begin{frame}{du}
+  \begin{itemize}
+  \item { O comando \textbf{du} retorna ao usuário o espaço de disco ocupado individualmente por \textbf{todos} os arquivos e sub-diretórios contidos no diretório atual.}
+    \item{Usando a flag \textbf{-s} o comando irá retornar um resumo do espaço ocupado pelos diretórios indicados.
+    }
+    \item{\textbf{du -s Documentos} irá retornar o espaço ocupado pelo diretório documentos, enquanto \textbf{du} irá retornar o espaço ocupado por cada arquivo, sub-diretório pelo diretório atual.}
+    \end{itemize}
+\end{frame}
+
+
+
+\subsection{gzip}
+\begin{frame}{Comprimir Arquivo}{gzip}
+  \begin{itemize}
+  \item {O comando \textbf{gzip} comprime um arquivo para poupar espaço de disco.
+  } 
+    \item{ \textbf{gzip arquivo.txt} irá criar um \textbf{arquivo.txt.gz} que terá um tamanho menor que o anterior}
+    \item{você pode usar o comando gunzip para fazer o caminho contrário.
+  }
+  \end{itemize}
+\end{frame}
+
+\subsection{zcat}
+\begin{frame}{Concatenar/exibir arquivos comprimidos}{zcat}
+  \begin{itemize}
+  \item { Usa-se o zcat para ler arquivos sem ter que descompacta-los.
+} 
+    \item{ \textbf{zcat arquivo1.gz} irá exibir o conteudo do arquivo1.}
+    \item{O mesmo comando pode ser usado para exibir diversos arquivos ao mesmo tempo, como: \textbf{zcat arquivo1 arquivo2}}
+ 
+  \end{itemize}
+\end{frame}
+
+
+\subsection{file}
+\begin{frame}{Mostrar tipo de arquivo}{file}
+  \begin{itemize}
+  \item {   
+  O comando \textbf{file} retorna ao usuário o tipo de todos os arquivos indicados pelo mesmo.
+  } 
+  \end{itemize}
+\end{frame}
+
+\subsection{diff}
+\begin{frame}{Diferença entre arquivos}{dif}
+  \begin{itemize}
+  \item {   
+  O comando \textbf{diff} mostra a diferença entre dois arquivos.
+  } 
+  \item{Se a comparação não for entre textos, o comando somente dirá se os arquivos são iguais ou diferentes}
+  \end{itemize}
+\end{frame}
+
+\subsection{find}
+\begin{frame}{Busca}{find}
+    \begin{itemize}
+    \item{O comando \textbf{find} pode ser usado para encontrar um arquivo utilizando uma palavra, data, tamanho ou outros atributos que você especifique}
+    \item{O comando é case sensitive, por tanto usa-se a flag \textbf{-i} para ignorar tal caracteristica.}
+    \item{Para mais flags e funções específicas da função, olhe o manual da mesma com o comando \textbf{man find}}
+    \end{itemize}
+
+\end{frame}
+
+\subsection{history}
+\begin{frame}{Histórico de comandos}{history}
+  \begin{itemize}
+  \item {O comando \textbf{history} mostra uma lista dos comandos usados anteriormente.
+  } 
+    \item{ É possível utilizar o comando \textbf{!!} para reutilizar o ultimo comando dado}
+    \item{ Também pode-se usar comandos como \textbf{!less} para usar o ultimo comando iniciado com \textbf{less}, \textbf{!5} para reutilizar o comando número 5 na lista do history ou \textbf{!-3} para utilizar o terceiro comando mais recente.}
+  \end{itemize}
+\end{frame}
+
+\section*{Sumário dos comandos}
+
+\begin{frame}{Sumário dos comandos}
+\begin{center}
+ \begin{tabular}{|| c | p{7cm}||} 
+ \hline
+ \textbf{Comando} & \textbf{Descri\c{c}ão}\\ [0.5ex] 
+ \hline\hline
+ df & Mostra a quantidade de espa\c{c}o que há no disco\\
+ \hline
+ du & Mostra o espa\c{c}o ocupado no disco pelo diretório atual, pelos seus arquivos e subdiretórios\\
+ \hline
+ gzip & Comprime o arquivo para a extensão gz, usa-se \textbf{gunzip}\\
+ \hline
+ zcat & Exibe o conteúdo de um arquivo comprimido sem precisar descomprimi-lo\\
+ \hline
+ file & Retornao tipo do arquivo especificado\\
+ \hline
+ diff & Exibe a diferen\c{c}a entre dois arquivos\\
+ \hline
+ find & Procura arquivos com a palavra especificada\\
+ \hline
+ history & Lista o histórico dos comandos digitados no terminal\\
+ \hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+
+\end{document}
+
+

@@ -1,0 +1,245 @@
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{color}
+
+% There are many different themes available for Beamer. A comprehensive
+% list with examples is given here:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+% You can uncomment the themes below if you would like to use a different
+% one:
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{boxes}
+\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{default}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+\title{Aula 5 - Unix}
+
+% A subtitle is optional and this may be deleted
+\subtitle{Curso de Unix}
+
+\author{PET Computa\c{c}ão}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[UFSC] % (optional, but mostly needed)
+{
+%
+  Departamento de Informática e Estatística\\
+  Universidade de Santa Catarina}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date{PET Computa\c{c}ão, 2015}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{Curso de Unix}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Sumário}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+% Let's get started
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+% Section and subsections will appear in the presentation overview
+% and table of contents.
+\section{Seguran\c{c}a do sistema de arquivos}
+
+\subsection{Acessos}
+
+\begin{frame}{Seguran\c{c}a do sistema de arquivos}{Acessos}
+   \begin{block}{}
+\textcolor{black}{-rwxrw-r-\--} \textcolor{brown}{1} \textcolor{blue}{matheusb} \textcolor{orange}{pet\_computacao} \textcolor{green}{2450} \textcolor{purple}{Sept29 11:52} \textcolor{red}{file1}
+\end{block}
+   \begin{itemize}
+   \item {\textcolor{black}{Dez dígitos que significam os acessos que cada usuário possui neste arquivo ou diretório.}}
+   \item{\textcolor{blue}{Usuário dono do arquivo ou diretório}}
+  \item{\textcolor{orange}{Grupo dono do arquivo ou diretório}}
+  \item{\textcolor{green}{Tamanho do arquivo ou diretório}}
+  \item{\textcolor{purple}{Data de cria\c{c}ão do arquivo ou diretóiro}}
+  \item{\textcolor{red}{Nome do arquivo ou diretório}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Seguran\c{c}a do sistema de arquivos}{Acessos}
+\begin{block}{}
+\textcolor{black}{-rwxrw-r-\--} \textcolor{brown}{1} \textcolor{blue}{matheusb} \textcolor{orange}{pet\_computacao} \textcolor{green}{2450} \textcolor{purple}{Sept29 11:52} \textcolor{red}{file1}
+\end{block}
+\begin{itemize}
+\item {Os primeiros dez dígitos estão relacionados as permissões de acesso ao arquivo ou diretório, o primeiro dígito pode ser \textbf{d} ou \textbf{-}, quando este dígito é \textbf{d} significa que o que foi listado é um diretório, quando é\textbf{\ -} significa que o que foi listado é um arquivo.\\ }
+\textbf{Podemos dividir os nove dígitos que sobraram em três grupos:}\\
+\item{Os primeiros três dígitos revelam as permissões do dono do que foi listado.}
+\item{Os dígitos do meio dizem as permissões do grupo dono do que foi listado.}
+\item{Os três últimos dígitos mostram as permissões dos outros usuários em rela\c{c}ão ao que foi listado.}
+\end{itemize}
+\end{frame}
+
+\subsection{Modificando acessos}
+\begin{frame}{Seguran\c{c}a do sistema de arquivos}{Modificando acessos}
+  \begin{itemize}
+  \item {O comando \textbf{chmod} permite modificar as permissões de acessos aos arquivos, pode ser usado desta forma: \textbf{chmod a$+$x arquivo}, isto sinaliza que os outros usuários terão a permissão de executa-lo.}\end{itemize}
+  \begin{center}
+ \begin{tabular}{||c | p{9cm}||} 
+ \hline
+ \textbf{Flag} & \textbf{Descri\c{c}ão}\\ [0.5ex] 
+ \hline\hline
+ u & Usuário\\ 
+ \hline
+ g & Grupo\\
+ \hline
+ a & Todos os usuários\\
+ \hline
+ o & Outro\\
+ \hline
+ r & Ler\\
+ \hline
+ w & Escrever ou deletar\\
+ \hline
+ x& Executar\\
+ \hline
+ + & Adicionar permissão\\
+ \hline
+ - & Remover permissão\\
+ \hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\section{Processos e programas em execu\c{c}ão}
+\subsection{Execu\c{c}ões em Background e Foreground}
+\begin{frame}{Processos e programas em execu\c{c}ão}{Execu\c{c}ões em Background e Foreground}
+  \begin{itemize}
+  \item { Processos são programas em execu\c{c}ão neste terminal, cada programa em execu\c{c}ão tem o seu PID (process identifier) para listar os processos e seus PID's usamos o comando \textbf{ps}. Processos podem estar em execu\c{c}ão em primeiro plano (foreground), execu\c{c}ão em segundo plano (background) ou suspenso.Usualmente o shell não retorna o Unix prompt enquanto um processo está em execu\c{c}ão em primeiro plano.
+    }\end{itemize}
+\end{frame}
+
+\begin{frame}{Processos e programas em execu\c{c}ão}{Rodando processos em background}
+  \begin{itemize}
+  \item {Para executarmos um processo em background devemos colocar o caractere \textbf{\&} ao final da chamada do processo. Ao fazer isto não precisamos esperar o final da execu\c{c}ão do processo para continuar usando o mesmo terminal.}
+  \item {Quando queremos jogar para background um processo que já está em execu\c{c}ão no terminal, devemos apertar \textit{Ctrl+z} (irá suspender o processo) e depois dar o comando \textbf{bg}.}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Processos e programas em execu\c{c}ão}{Listando processos suspensos ou em background}
+  \begin{itemize}
+  \item {Para listar processos suspensos ou em background no terminal utilizado devemos usar o comando \textbf{jobs}}
+  \item {Se quisermos executar um processo que está suspenso, devemos dar o comando \textbf{fg}\textit{ \%numero\_do\_processo} para executa-lo em foreground ou \textbf{bg}\textit{ numero\_do\_processo} para executa-lo em background.}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Processos e programas em execu\c{c}ão}{Cancelando processos em execu\c{c}ão}
+  \begin{itemize}
+  \item {Quando o processo está em execu\c{c}ão em primeiro plano (foreground) e queremos cancelá-lo, podemos simplesmente apertar \textit{Ctrl+c}.}
+  \item {Se o processo que queremos cancelar está em segundo plano (background) devemos dar o comando \textbf{kill} \textit{ \%numero\_do\_processo}.}
+  
+  \item{Podemos também cancelar um processo pelo seu PID (encontrado quando utilizamos o comando \textbf{ps}), utilizando o comando \textbf{kill} \textit{ PID\_do\_processo}, caso um processo esteja resistindo ao cancelamento, podemos utilizar \textbf{kill -9} \textit{ numero\_do\_processo}.. }
+  \end{itemize}
+\end{frame}
+
+\section*{Sumário dos comandos}
+
+\begin{frame}{Sumário dos comandos}
+\begin{center}
+ \begin{tabular}{|| c | p{7cm}||} 
+ \hline
+ \textbf{Comando} & \textbf{Descri\c{c}ão}\\ [0.5ex] 
+ \hline\hline
+ ls -lag & Lista as permissões de acessos para cada arquivo ou diretório\\ 
+ \hline
+ chmod [op\c{c}ões arquivo] & Modifica as permissões do arquivo especificado\\
+ \hline
+ comando \& & Executa o comando em background\\
+ \hline
+ Ctrl+z & Suspende processos que estão executando em foreground\\
+ \hline
+ Ctrl+c & Cancela processos que estão executando em foreground\\
+ \hline
+ bg & Executa em background o processo que está em suspensão\\
+ \hline
+ jobs & Lista os processos em background e suspensão\\
+ \hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Sumário dos comandos}
+\begin{center}
+ \begin{tabular}{|| c | p{9cm}||} 
+ \hline
+ \textbf{Comando} & \textbf{Descri\c{c}ão}\\ [0.5ex] 
+ \hline\hline
+ fg \% & Executa em foreground o processo que está em suspensão\\
+ \hline
+ ps & Lista os processos em execu\c{c}ão\\
+ \hline
+ kill \% ou kill & Cancela o processo que está executando em background pelo seu número ou PID\\
+ \hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\end{document}
+
+
