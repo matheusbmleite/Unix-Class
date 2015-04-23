@@ -115,6 +115,7 @@
 \end{block}
    \begin{itemize}
    \item {\textcolor{black}{Dez dígitos que significam os acessos que cada usuário possui neste arquivo ou diretório.}}
+   \item{\textcolor{brown}{Número de \textit{hard links} deste arquivo ou diretório, \textit{hard links} são essêncialmente nomes atribuídos a arquivos ou diretórios.}}
    \item{\textcolor{blue}{Usuário dono do arquivo ou diretório}}
   \item{\textcolor{orange}{Grupo dono do arquivo ou diretório}}
   \item{\textcolor{green}{Tamanho do arquivo ou diretório}}
@@ -162,6 +163,37 @@
  + & Adicionar permissão\\
  \hline
  - & Remover permissão\\
+ \hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Seguran\c{c}a do sistema de arquivos}{Modificando acessos}
+  \begin{center}
+ \begin{tabular}{l | r} 
+ rwx rwx rwx = 111 111 111 & rwx = 111 em binário = 7\\ 
+ rw- rw- rw- = 110 110 110 & rw- = 110 em binário = 6\\
+ rwx --- --- = 111 000 000 & r-x = 101 em binário = 5\\
+ & r-- = 100 em binário = 4\\
+\end{tabular}
+\end{center}
+
+  \begin{center}
+ \begin{tabular}{||c | p{9cm}||} 
+ \hline
+ \textbf{Permssão} & \textbf{Descri\c{c}ão}\\ [0.5ex] 
+ \hline\hline
+ 777 & Sem restrições, qualquer um pode fazer o que quer.\\ 
+ \hline
+ 755 & O dono do arquivo pode ler, escrever e executar. Qualquer outro usuário pode ler e executar.\\
+ \hline
+ 700 & O dono do arquivo pode ler, escrever e executar.\\
+ \hline
+ 666 & Todos os usuários podem ler e escrever o arquivo.\\
+ \hline
+ 644 & O dono do arquivo pode ler e escrever e os outros só podem ler.\\
+ \hline
+ 600 & O dono pode ler e escrever.\\
  \hline
 \end{tabular}
 \end{center}
@@ -241,5 +273,6 @@
 \end{frame}
 
 \end{document}
+
 
 
